@@ -32,6 +32,7 @@ if (movimientos==null || movimientos.size()==0){%>
 	<tr><td>Saldo actual:<%=request.getAttribute("saldo") %></td></tr>
 </table>
 <a href="Controller?op=toOperacion" >Volver Operaciones</a>
+<a href="Controller?op=toLogin" >Volver Login</a>
 </center>
 
 
