@@ -126,7 +126,7 @@ public class GestionCajero {
 		ArrayList<Movimiento> movs=new ArrayList<>();
 		try (Connection cn=ds.getConnection()){								
 			//definimos la instrucción SQL y la enviamos a través del objeto Statement
-			String sql="select * from movimientos where idcuenta=? order by fecha";
+			String sql="select * from movimientos where idcuenta=? order by fecha desc";
 			PreparedStatement st=cn.prepareStatement(sql);
 			st.setInt(1, numCuenta);
 			ResultSet rs=st.executeQuery();

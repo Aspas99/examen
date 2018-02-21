@@ -8,7 +8,7 @@
 </head>
 <body>
 <%List<Movimiento> movimientos = (List<Movimiento>)request.getAttribute("movimientos");
-
+double saldoanterior=(double)request.getAttribute("saldo");
  
 if (movimientos==null || movimientos.size()==0){%>
 	<center>
@@ -21,9 +21,11 @@ if (movimientos==null || movimientos.size()==0){%>
 <tr>
 <th>Fecha</th><th>Operación</th><th>Cantidad</th>
 </tr>
-	<% for(int i=0;i<movimientos.size();i++){%>
+	<% for(int i=movimientos.size()-1;i>=0;i--){%>
 		 <tr><td><%=movimientos.get(i).getFecha() %></td><td><%=movimientos.get(i).getOperacion() %>
 		 </td><td><%=movimientos.get(i).getCantidad() %></td>
+		 <td><% saldoanterior=(movimientos.get(i).getOperacion().equals("ingreso")?(saldoanterior - movimientos.get(i).getCantidad()):(saldoanterior + movimientos.get(i).getCantidad())); %>
+		 <%=saldoanterior %></td>
 		 </tr>
 	<%}%>
 	<tr><td>Saldo actual:<%=request.getAttribute("saldo") %></td></tr>
