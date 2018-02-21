@@ -24,8 +24,9 @@ if (movimientos==null || movimientos.size()==0){%>
 	<% for(int i=movimientos.size()-1;i>=0;i--){%>
 		 <tr><td><%=movimientos.get(i).getFecha() %></td><td><%=movimientos.get(i).getOperacion() %>
 		 </td><td><%=movimientos.get(i).getCantidad() %></td>
-		 <td><% saldoanterior=(movimientos.get(i).getOperacion().equals("ingreso")?(saldoanterior - movimientos.get(i).getCantidad()):(saldoanterior + movimientos.get(i).getCantidad())); %>
-		 <%=saldoanterior %></td>
+		 <td> <%=saldoanterior %><% saldoanterior=(movimientos.get(i).getOperacion().equals("ingreso")?(saldoanterior - movimientos.get(i).getCantidad()):(saldoanterior + movimientos.get(i).getCantidad())); %>
+		      
+		</td>
 		 </tr>
 	<%}%>
 	<tr><td>Saldo actual:<%=request.getAttribute("saldo") %></td></tr>
